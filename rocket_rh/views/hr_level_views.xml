@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_level_view_tree" model="ir.ui.view">
+        <field name="name">hr.level.view.tree</field>
+        <field name="model">hr.level</field>
+        <field name="arch" type="xml">
+            <list string="Niveles Jerárquicos" editable="bottom">
+                <field name="name" />
+                <field name="code" />
+                <field name="description" />
+                <field name="active" />
+            </list>
+        </field>
+    </record>
+
+    <record id="hr_level_action" model="ir.actions.act_window">
+        <field name="name">Niveles Jerárquicos</field>
+        <field name="res_model">hr.level</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="hr_level_view_tree"/>
+    </record>
+
+    <menuitem id="menu_hr_level" name="Niveles Jerárquicos" parent="hr.menu_hr_root" action="hr_level_action"/>
+</odoo>

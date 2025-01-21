@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="rocket_hr_employee_view_form" model="ir.ui.view">
+        <field name="name">rocket.hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='coach_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='private_phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='bank_account_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//div[@name='div_km_home_work']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='passport_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='place_of_birth']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//separator[@name='has_work_permit']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='visa_no']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='permit_no']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='visa_expire']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='work_permit_expiration_date']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='has_work_permit']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_ids']" position="after">
+                <field name="x_age" />
+                <field name="x_company_tenure" />
+            </xpath>
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="x_level" />
+                <field name="x_contract_type" />
+            </xpath>
+            <xpath expr="//page[@name='skills_resume']" position="inside">
+                <div class="row">
+                    <div class="o_hr_skills_editable o_hr_skills_group o_group_skills col-lg-5 d-flex flex-column">
+                        <separator string="CV" class="mb-4"/>
+                        <group>
+                            <field name="linkedin_url" />
+                            <field name="cv_file" widget="binary" />
+                        </group>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//group[@name='departure']" position="after">
+                <group name="access_credentials" string="Credenciales de acceso">
+                    <field name="x_building_access_card" />
+                    <field name="x_parking_access_id" />
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='identification_id']" position="after">
+                <field name="rfc" />
+            </xpath>
+            <xpath expr="//field[@name='children']" position="after">
+                <separator string="Documentos"/>
+                <field name="nda" widget="binary" />
+                <field name="privacy_notice" widget="binary" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
