@@ -57,7 +57,7 @@
                     <div class="o_hr_skills_editable o_hr_skills_group o_group_skills col-lg-5 d-flex flex-column">
                         <separator string="CV" class="mb-4"/>
                         <group>
-                            <field name="linkedin_url" />
+                            <field name="linkedin_url" placeholder="https://linkedin.com/in/username"/>
                             <field name="cv_file" widget="binary" />
                         </group>
                     </div>
@@ -65,8 +65,8 @@
             </xpath>
             <xpath expr="//group[@name='departure']" position="after">
                 <group name="access_credentials" string="Credenciales de acceso">
-                    <field name="x_building_access_card" />
-                    <field name="x_parking_access_id" />
+                    <field name="x_building_access_card" placeholder="Ingrese el número de la tarjeta de acceso"/>
+                    <field name="x_parking_access_id" placeholder="Ingrese el ID de acceso al estacionamiento"/>
                 </group>
             </xpath>
             <xpath expr="//field[@name='identification_id']" position="after">
@@ -76,6 +76,20 @@
                 <separator string="Documentos"/>
                 <field name="nda" widget="binary" />
                 <field name="privacy_notice" widget="binary" />
+            </xpath>
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page name="hr_platform" string="Plataformas y Credenciales">
+                    <field name="platform_ids" widget="many2many">
+                        <list string="Plataformas y Credenciales" create="true" edit="true" delete="true">
+                            <field name="name" string="Plataforma"/>
+                            <field name="user" string="Usuario"/>
+                            <field name="email" string="Email"/>
+                            <field name="status"/>
+                            <field name="last_access" string="Último acceso"/>
+                            <field name="access_level" string="Nivel de acceso"/>
+                        </list>
+                    </field>
+                </page>
             </xpath>
         </field>
     </record>

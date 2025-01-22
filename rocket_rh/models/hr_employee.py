@@ -19,13 +19,18 @@ class HrEmployeeRocket(models.Model):
         ],
         string="Tipo de contrato",
     )
-    linkedin_url = fields.Char(string="LinkedIn", help="https://linkedin.com/in/username")
+    linkedin_url = fields.Char(string="LinkedIn")
     cv_file = fields.Binary(attachment=True)
-    x_building_access_card = fields.Char(string="Tarjeta de acceso al edificio", help="Ingrese el número de la tarjeta de acceso")
-    x_parking_access_id = fields.Char(string="ID de acceso al estacionamiento", help="Ingrese el ID de acceso al estacionamiento")
+    x_building_access_card = fields.Char(string="Tarjeta de acceso al edificio")
+    x_parking_access_id = fields.Char(string="ID de acceso al estacionamiento")
     rfc = fields.Char(string="RFC")
     nda = fields.Binary(string="NDA", attachment=True)
     privacy_notice = fields.Binary(string="Aviso de privacidad", attachment=True)
+    platform_ids = fields.Many2many(
+        comodel_name="hr.platform",
+        relation="employee_platform_rel",
+        string="Plataformas y Credenciales"
+    )
 
     @api.depends('create_date')
     def _compute_company_tenure(self):
@@ -44,7 +49,25 @@ class HrLevel(models.Model):
     _description = "Niveles Jerárquicos"
 
     name = fields.Char(string="Nombre del Nivel", required=True)
-    code = fields.Char(string="Código", help="Código único para identificar el nivel.")
+    code = fields.Char(string="Código")
     description = fields.Text(string="Descripción")
     active = fields.Boolean(string="Activo", default=True)
+
+
+class HrPlatform(models.Model):
+    _name = "hr.platform"
+    _description = "Plataformas"
+
+    name = fields.Char(string="Plataforma", required=True)
+    user = fields.Char(string="Usuario")
+    email = fields.Char(string="Email")
+    status = fields.Boolean(string="Status")
+    last_access = fields.Date(string="Último acceso")
+    access_level = fields.Selection(
+        selection=[
+            ("admin", "Super Admin"),
+            ("user", "Power User"),
+        ],
+        string="Nivel de acceso",
+    )
 

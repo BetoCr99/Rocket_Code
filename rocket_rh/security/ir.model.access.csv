@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hr_level,access_hr_level,rocket_rh.model_hr_level,,1,1,1,1
+access_hr_platform,access_hr_platform,rocket_rh.model_hr_platform,,1,1,1,1
